@@ -1,1 +1,542 @@
-hallo Land Ke vikram
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gifts Hamper Box | Premium Order Tracking</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #090b10;
+  color: #fff;
+  min-height: 100vh;
+  padding: 22px 14px;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+}
+
+.brand {
+  text-align: center;
+  margin: 15px 0 28px;
+}
+
+.logo {
+  font-size: 42px;
+  color: #e8c879;
+}
+
+.brand h1 {
+  letter-spacing: 3px;
+  font-size: 23px;
+  margin: 10px 0;
+}
+
+.brand p {
+  color: #aaa;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.card {
+  background: linear-gradient(145deg, #1b1d25, #101116);
+  border: 1px solid #34313a;
+  border-radius: 20px;
+  padding: 23px;
+  margin-bottom: 18px;
+  box-shadow: 0 12px 35px #0006;
+}
+
+h2 {
+  font-size: 19px;
+  margin-bottom: 9px;
+}
+
+.muted {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+input, button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 15px;
+  margin-top: 14px;
+}
+
+input {
+  background: #090b10;
+  color: white;
+  border: 1px solid #49434b;
+  outline: none;
+}
+
+input:focus {
+  border-color: #e8c879;
+}
+
+button {
+  background: linear-gradient(90deg, #b88b35, #f5df9a);
+  color: #17130a;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: .9;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.badge {
+  display: inline-block;
+  color: #54f09a;
+  background: #123b29;
+  border: 1px solid #1eaa61;
+  padding: 8px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #333;
+}
+
+.info span:first-child {
+  color: #aaa;
+  font-size: 13px;
+  flex: 1;
+}
+
+.info span:last-child {
+  text-align: right;
+  font-size: 13px;
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.charge {
+  color: #f5dc91 !important;
+  font-weight: bold;
+}
+
+.notice {
+  margin-top: 18px;
+  padding: 14px;
+  background: #282114;
+  border: 1px solid #75602c;
+  border-radius: 12px;
+  color: #f5dc91;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.timeline {
+  margin-top: 25px;
+}
+
+/* Timeline layout */
+.step {
+  display: flex;
+  gap: 14px;
+  min-height: 67px;
+  position: relative;
+}
+
+/* Circle and connecting line */
+.indicator {
+  width: 17px;
+  flex: 0 0 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.dot {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #393939;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Completed circles are green */
+.dot.done {
+  background: #20d879;
+  box-shadow: 0 0 12px #20d87966;
+}
+
+/* Current Shipped circle blinks green */
+.dot.current {
+  background: #20d879;
+  animation: greenPulse 1.3s infinite;
+}
+
+@keyframes greenPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px #20d87966;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px #20d879;
+    transform: scale(1.15);
+  }
+}
+
+/* Green lines between completed steps */
+.line {
+  width: 4px;
+  flex: 1;
+  min-height: 47px;
+  background: #393939;
+  border-radius: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.line.done {
+  background: #20d879;
+  box-shadow: 0 0 7px #20d87944;
+}
+
+.step-content {
+  flex: 1;
+  padding-bottom: 24px;
+}
+
+.step h3 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.step p {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.error {
+  color: #ff9999;
+  margin-top: 14px;
+  font-size: 13px;
+}
+
+footer {
+  text-align: center;
+  color: #777;
+  font-size: 12px;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+@media(max-width:400px) {
+  .brand h1 {
+    font-size: 19px;
+    letter-spacing: 2px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <header class="brand">
+    <div class="logo">✦</div>
+    <h1>GIFTS HAMPER BOX</h1>
+    <p>PREMIUM PACKAGING · SPECIAL MOMENTS</p>
+  </header>
+
+  <section class="card">
+    <h2>📦 Track Your Order</h2>
+    <p class="muted">
+      Enter your tracking code to view your order details,
+      delivery schedule and listed status.
+    </p>
+
+    <input
+      id="trackingCode"
+      placeholder="Enter Tracking Code"
+      autocomplete="off"
+      maxlength="40"
+    >
+
+    <button onclick="trackOrder()">TRACK ORDER →</button>
+    <p id="error" class="error" role="alert"></p>
+  </section>
+
+  <section id="result" class="card hidden">
+    <p class="muted">ORDER TRACKING DETAILS</p>
+    <h2 id="customerName" style="margin-top:10px"></h2>
+    <span class="badge" id="statusBadge"></span>
+
+    <div class="info">
+      <span>Tracking Code</span>
+      <span id="code"></span>
+    </div>
+
+    <div class="info">
+      <span>Customer Mobile</span>
+      <span id="mobile"></span>
+    </div>
+
+    <div class="info">
+      <span>Current Status</span>
+      <span id="status"></span>
+    </div>
+
+    <div class="info">
+      <span>Expected Delivery</span>
+      <span id="delivery"></span>
+    </div>
+
+    <div class="info">
+      <span>Delivery Time</span>
+      <span id="deliveryTime"></span>
+    </div>
+
+    <div class="info">
+      <span>Delivery Address</span>
+      <span id="address"></span>
+    </div>
+
+    <div class="info">
+      <span>Delivery Charge</span>
+      <span id="deliveryCharge" class="charge"></span>
+    </div>
+
+    <div class="info">
+      <span>Charge Payment Status</span>
+      <span id="paymentStatus"></span>
+    </div>
+
+    <div id="deliveryNotice" class="notice hidden"></div>
+
+    <div class="timeline">
+      <h2 style="margin-bottom:20px">Order Journey</h2>
+      <div id="steps"></div>
+    </div>
+
+    <p class="muted" style="margin-top:12px">
+      Tracking details are seller-entered Realstic data.
+      Live courier location and delivery are independently verified.
+    </p>
+  </section>
+
+  <footer>
+    © 2026 Gifts Hamper Box<br>
+    Made with ♥ for your special moments
+  </footer>
+
+</div>
+
+<script>
+const orders = {
+  "TRACK0013738": {
+    name: "Noorein",
+    mobile: "Not provided",
+    status: "Order Packed",
+    delivery: "22 October 2026",
+    time: "2:00 PM – 3:00 PM",
+    address: "Hyderabad, Telangana 500028, India",
+    deliveryCharge: "Not specified",
+    paymentStatus: "Not specified",
+    transitMessage: "",
+    chargePending: false
+  },
+
+  "TRACK0028374": {
+    name: "Dipika Senapati",
+    mobile: "7205994078",
+    status: "Order Confirmed",
+    delivery: "28 October 2026",
+    time: "1:00 PM",
+    address: "Keonjhar, Odisha 758043, India",
+    deliveryCharge: "₹1,998.90",
+    paymentStatus: "Pending verification",
+    transitMessage: "",
+    chargePending: true
+  },
+
+  "TRACK0039251": {
+    name: "P. Krishna Kumar",
+    mobile: "Not provided",
+    status: "Shipped",
+    delivery: "25 October 2026",
+    time: "4:00 PM – 5:00 PM",
+    address: "6A, Kavimani Street, Thiruvalluvar Main Road, Fish Shop Opposite, Bypass Road, Madurai, Tamil Nadu 625016, India",
+    deliveryCharge: "Pay Refunded Delivery",
+    paymentStatus: "Not Received",
+    transitMessage: "Seller-entered transit note: parcel is reported to be approximately 200–300 km beyond Gujarat. Exact location and distance have not been verified by a live courier service.",
+    chargePending: false
+  }
+};
+
+const stages = [
+  "Order Confirmed",
+  "Order Packed",
+  "Shipped",
+  "Out for Delivery",
+  "Delivered"
+];
+
+function trackOrder() {
+  const code = document.getElementById("trackingCode")
+    .value.trim().toUpperCase();
+
+  const error = document.getElementById("error");
+  const result = document.getElementById("result");
+
+  error.textContent = "";
+  result.classList.add("hidden");
+
+  if (!code) {
+    error.textContent = "Please enter your tracking code.";
+    return;
+  }
+
+  const order = orders[code];
+
+  if (!order) {
+    error.textContent =
+      "Tracking code not found. Please check and try again.";
+    return;
+  }
+
+  document.getElementById("customerName").textContent = order.name;
+  document.getElementById("statusBadge").textContent =
+    order.status.toUpperCase();
+  document.getElementById("code").textContent = code;
+  document.getElementById("mobile").textContent = order.mobile;
+  document.getElementById("status").textContent = order.status;
+  document.getElementById("delivery").textContent = order.delivery;
+  document.getElementById("deliveryTime").textContent = order.time;
+  document.getElementById("address").textContent = order.address;
+  document.getElementById("deliveryCharge").textContent =
+    order.deliveryCharge;
+  document.getElementById("paymentStatus").textContent =
+    order.paymentStatus;
+
+  const notice = document.getElementById("deliveryNotice");
+  const messages = [];
+
+  if (order.transitMessage) {
+    messages.push(order.transitMessage);
+  }
+
+  if (order.chargePending) {
+    messages.push(
+      "Delivery charge listed: " + order.deliveryCharge +
+      ". Payment is pending verification. Please confirm the charge with the seller."
+    );
+  }
+
+  if (messages.length) {
+    notice.textContent = messages.join(" ");
+    notice.classList.remove("hidden");
+  } else {
+    notice.textContent = "";
+    notice.classList.add("hidden");
+  }
+
+  const completedCount = stages.indexOf(order.status) + 1;
+  const steps = document.getElementById("steps");
+  steps.replaceChildren();
+
+  stages.forEach((stage, index) => {
+    const step = document.createElement("div");
+    step.className = "step";
+
+    const indicator = document.createElement("div");
+    indicator.className = "indicator";
+
+    const dot = document.createElement("div");
+    dot.className = "dot";
+
+    if (index < completedCount) {
+      dot.classList.add("done");
+    }
+
+    // Blink only the current Shipped step.
+    if (stage === "Shipped" && order.status === "Shipped") {
+      dot.classList.add("current");
+    }
+
+    indicator.appendChild(dot);
+
+    // Draw connector lines between the circles.
+    if (index < stages.length - 1) {
+      const line = document.createElement("div");
+      line.className = "line";
+
+      // Green connector only when both steps are completed.
+      if (index < completedCount - 1) {
+        line.classList.add("done");
+      }
+
+      indicator.appendChild(line);
+    }
+
+    const content = document.createElement("div");
+    content.className = "step-content";
+
+    const heading = document.createElement("h3");
+    heading.textContent = stage;
+
+    const description = document.createElement("p");
+
+    if (index < completedCount) {
+      description.textContent = "Seller-entered tracking status";
+    } else {
+      description.textContent = "Awaiting update";
+    }
+
+    content.appendChild(heading);
+    content.appendChild(description);
+
+    step.appendChild(indicator);
+    step.appendChild(content);
+    steps.appendChild(step);
+  });
+
+  result.classList.remove("hidden");
+}
+
+document.getElementById("trackingCode")
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      trackOrder();
+    }
+  });
+</script>
+</body>
+</html>
